@@ -35,12 +35,17 @@ def transformPix(pix, width, height, padding):
     return newMatrix
 
 if __name__=='__main__':
-    matrix=((0, 1, 0), (1, -4, 1), (0, 1,  0))
-    path=input()
-    k=int(input())
+    #matrix=((0, 1, 0), (1, -4, 1), (0, 1,  0))
+    path=input('Введите путь до изображения\n')
+    k=int(input('Введите размерность матрицы(2*k+1)\n'))
+    sizeMatrix=2*k+1
+    matrix=[[0]*sizeMatrix for i in range(sizeMatrix)]
+    print('Введите матрицу')
+    for i in range(sizeMatrix):
+        for j in range(sizeMatrix):
+            matrix[i][j]=int(input())                
     image=Image.open(path).convert('L')
     image=ImageChops.invert(image)
-    sizeMatrix=2*k+1
     padding=int((sizeMatrix-1)/2)#отступ c каждой стороны
     pixels=image.load()
     widthImg=image.size[0]
