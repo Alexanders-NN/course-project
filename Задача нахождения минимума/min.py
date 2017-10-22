@@ -4,8 +4,6 @@ import random
 BEG=0
 END=100
 NUMBER_VAR=2
-MAX_ITERATION=1e5
-EPS=1e-5
 
 def Sort(fun, coorginate):
     for i in range(len(fun)):
@@ -45,6 +43,9 @@ def evolution(parents):
     return newGeneration
     
 def genetic():
+    param={'firstGeneration':20,'nextGeneration':10,'bestParants':3,'goodParants':3}
+    maxIteration=1e5
+    eps=1e-5
     generation=[]
     fun=[]
     for i in range(firstGeneration):
@@ -67,7 +68,7 @@ def genetic():
             fun.append(function(generation[i]))
         Sort(fun, generation)
         if(fun[0]<globMin):
-           # if(globMin-fun[0]<EPS):
+           # if(globMin-fun[0]<eps):
            #     globMin=fun[0]
            #     dotMin=generation[0]
            #     break
